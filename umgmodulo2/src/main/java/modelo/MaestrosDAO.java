@@ -25,7 +25,7 @@ public class MaestrosDAO {
     private static final String SQL_SELECT = "SELECT Mae_Codigo, Mae_Nombre, Mae_Direccion, Mae_Estatus FROM maestros";
     private static final String SQL_QUERY = "SELECT Mae_Codigo, Mae_Nombre, Mae_Direccion, Mae_Estatus FROM maestros WHERE Mae_Codigo = ?";
     private static final String SQL_INSERT = "INSERT INTO maestros(Mae_Nombre, Mae_Direccion, Mae_Estatus) VALUES(?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE maestros SET Mae_Nombre=?, Mae_Direccion=?, Mae_Estatus=? WHERE Mae_Codigo = ?";
+    private static final String SQL_UPDATE = "UPDATE maestros SET Mae_Nombre=? WHERE Mae_Codigo = ?";
     private static final String SQL_DELETE = "DELETE FROM maestros WHERE Mae_Codigo=?";
  
     
@@ -102,8 +102,7 @@ public class MaestrosDAO {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setString(1, maestrosobjeto.getMae_Nombre());
             stmt.setInt(2, maestrosobjeto.getMae_Codigo());
-            stmt.setString(3, maestrosobjeto.getMae_Direccion());
-            stmt.setString(4, maestrosobjeto.getMae_Estatus());
+        
             
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
